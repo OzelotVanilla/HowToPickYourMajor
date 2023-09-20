@@ -14,3 +14,13 @@ Below is the basic content of `.gitignore`:
 node_modules/
 .next/
 ```
+
+Project Code Style
+----
+
+When a file is created, the creator have the right to specify the code style.
+In the project, please do not use the format tool to format the whole file,
+instead, only format the place you edited.
+
+In some situations, if you feel your code format inteferes with the existing code,
+you might want to turn off the format for a while before commit.
