@@ -3,7 +3,7 @@ const path = require('path');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    pageExtensions: ["tsx"],
+    pageExtensions: ["page.tsx"],
     /**
      * Disable module CSS, 
      *  from "https://stackoverflow.com/questions/67934463/how-to-turn-off-css-module-feature-in-next-js".
