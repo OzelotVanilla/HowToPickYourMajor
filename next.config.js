@@ -1,9 +1,18 @@
 const path = require('path');
 
+const possible_locale = ["en", "zh"]
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
     pageExtensions: ["page.tsx"],
+    i18n: {
+        locales: possible_locale,
+        defaultLocale: "en"
+    },
+    publicRuntimeConfig: {
+        locales: possible_locale
+    },
     /**
      * Disable module CSS, 
      *  from "https://stackoverflow.com/questions/67934463/how-to-turn-off-css-module-feature-in-next-js".

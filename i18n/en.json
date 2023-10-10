@@ -1,0 +1,16 @@
+{
+    "home": {
+        "title": "Who is the \"Major Right\" for Me ?",
+        "title_explaination": "Pick My Major \u002d Choose the best major for me",
+        "pick_now": "Pick it Now",
+        "compare": "See Comparison",
+        "overview": "Show me All"
+    },
+    "navbar": {
+        "project_name": "Pick My Major"
+    },
+    "lang": {
+        "en": "English",
+        "zh": "中文 (Chinese)"
+    }
+}
