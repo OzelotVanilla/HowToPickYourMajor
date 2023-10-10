@@ -1,2 +1,17 @@
 @import "../assets/fonts/LXGW.scss";
 
+body
+{
+    margin: 0px;
+    width: 100%;
+    height: 100vh;
+
+    font-family: "LXGWWenKai", "Arial", "Helvetica", "sans-serif";
+}
+
+// To ensure the page has a full width and height.
+#__next
+{
+    width: 100%;
+    height: 100%;
+}

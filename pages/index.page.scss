@@ -1,0 +1,37 @@
+@import "./global.scss";
+
+#HomePage_Frame
+{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .MainTitle
+    {
+        margin-bottom: 0dvh;
+    }
+
+    .SubTitle
+    {
+        margin-bottom: 10dvh;
+        color: #afafb0;
+    }
+
+    > *:last-child
+    {
+        margin-bottom: 10dvh;
+    }
+
+}
+
+#HomePage_LangSelectButton
+{
+    position: absolute;
+    z-index: 2;
+    top: 2vmin;
+    right: 2vmin;
+}
