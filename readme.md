@@ -1,6 +1,15 @@
 How To Pick Your Major
 ====
 
+What can this project do ?
+====
+
+This is a class project aimed to help WKU students to select their major,
+according to their characteristics or interests.
+
+Basic Configuration Guide
+====
+
 Basic `.gitignore`
 ----
 
