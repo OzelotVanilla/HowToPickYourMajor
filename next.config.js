@@ -14,6 +14,15 @@ const nextConfig = {
         locales: possible_locale
     },
     /**
+     * Rewrite api call to different IP address.
+     */
+    async rewrites()
+    {
+        return [
+            { source: "/api/getMajorData", destination: "http://10.8.25.245/webapi/getUpdatedMajorData/" }
+        ]
+    },
+    /**
      * Disable module CSS, 
      *  from "https://stackoverflow.com/questions/67934463/how-to-turn-off-css-module-feature-in-next-js".
      */
