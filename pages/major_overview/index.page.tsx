@@ -55,6 +55,8 @@ export default function MajorOverviewPage()
     }
 
     return (<SubPage_Layout><Layout id="MajorOverviewPage_Layout">
-        <Sider theme="light" style={{ height: "auto" }}>{getSideMenu()}</Sider>
+        <Sider theme="light" style={{ height: "auto" }} width="max(200px, 20vw)" collapsible={true}>
+            {getSideMenu()}
+        </Sider>
     </Layout></SubPage_Layout>)
 }

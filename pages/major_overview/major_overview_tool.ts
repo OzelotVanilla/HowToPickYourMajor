@@ -1,5 +1,4 @@
 import { encodeURIWithQueryParameter, jsonfyResponse } from "@/utils/common"
-import { type } from "os"
 
 export type AvailableCategory = ""
 
