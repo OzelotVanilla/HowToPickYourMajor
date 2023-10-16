@@ -10,26 +10,42 @@ const { Sider } = Layout
 
 export default function MajorOverviewPage()
 {
-    let [major_data, setMajorData] = useState<MajorData["majors"]>([])
+    let [major_list, setMajorList] = useState<MajorData["majors"]>([])
     const cookie = useCookie()
 
     const { text } = useI18N()
 
-    const cookie_name_major_data_version = "major_cache_data_version"
     const cookie_name_major_data = "major_cache_data"
 
     // onLoad
     useEffect(() =>
     {
-        // console.log(`Now major_cache_data_version: ${cookie.get(cookie_name_major_data_version)}`)
+        const cached_major_data: Partial<MajorData> = JSON.parse(cookie.get(cookie_name_major_data) ?? "{}")
+        // console.log(`Now major_cache_data_version: ${cached_major_data.current_version}`)
 
         fetchMajorOverviewData({
-            cache_data_version: cookie.get(cookie_name_major_data_version),
+            cache_data_version: "0", // cached_major_data.current_version,
             onSuccess: s =>
             {
-                setMajorData(s.majors);
-                cookie.set(cookie_name_major_data, s.majors)
-                cookie.set(cookie_name_major_data_version, s.current_version)
+                let new_major_data;
+                if (cached_major_data.majors == undefined || cached_major_data.majors.length == 0)
+                {
+                    new_major_data = s
+                }
+                else
+                {
+                    for (const major_to_update of s.majors)
+                    {
+                        const old_data_position =
+                            cached_major_data.majors.findIndex((m) => m.name == major_to_update.name)
+                        if (old_data_position >= 0) { cached_major_data.majors[old_data_position] = major_to_update }
+                        else { cached_major_data.majors.push(major_to_update) }
+                    }
+                    cached_major_data.current_version = s.current_version
+                    new_major_data = cached_major_data as MajorData
+                }
+                setMajorList(new_major_data.majors);
+                cookie.set(cookie_name_major_data, new_major_data)
             }
         })
     }, [])
@@ -38,7 +54,7 @@ export default function MajorOverviewPage()
     {
         type MenuItem = Required<MenuProps>["items"]
 
-        const grouped_by_category = groupElementBy(major_data, "category")
+        const grouped_by_category = groupElementBy(major_list, "category")
         const menu_items: MenuItem = [...grouped_by_category.entries()].map(
             ([category, majors]) => ({
                 key: category,
