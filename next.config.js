@@ -1,4 +1,5 @@
 const path = require('path');
+const temp_rewrite = require("./next.config.temp.js").temp_rewrites
 
 const possible_locale = ["en", "zh"]
 
@@ -16,12 +17,13 @@ const nextConfig = {
     /**
      * Rewrite api call to different IP address.
      */
-    async rewrites()
-    {
-        return [
-            { source: "/api/getMajorData", destination: "http://10.8.25.245/webapi/getUpdatedMajorData/" }
-        ]
-    },
+    // async rewrites()
+    // {
+    //     return [
+    //         { source: "/api/getMajorData", destination: "http://10.8.9.169/webapi/getUpdatedMajorData/" }
+    //     ]
+    // },
+    rewrites: temp_rewrite,
     /**
      * Disable module CSS, 
      *  from "https://stackoverflow.com/questions/67934463/how-to-turn-off-css-module-feature-in-next-js".
