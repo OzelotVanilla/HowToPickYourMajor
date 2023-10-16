@@ -67,7 +67,7 @@ export default function MajorOverviewPage()
 
         // console.log(menu_items)
         // console.log(...grouped_by_category.keys())
-        return (<Menu mode="inline" items={menu_items} openKeys={[...grouped_by_category.keys()]} />)
+        return (<Menu mode="inline" items={menu_items} defaultOpenKeys={[...grouped_by_category.keys()]} />)
     }
 
     return (<SubPage_Layout><Layout id="MajorOverviewPage_Layout">
