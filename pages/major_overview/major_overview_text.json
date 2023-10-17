@@ -1,0 +1,18 @@
+{
+    "en": {
+        "category": {
+            "College of Science, Mathematics and Technology": "College of Science, Mathematics and Technology"
+        },
+        "major_name": {
+            "Computer Science": "Computer Science"
+        }
+    },
+    "zh": {
+        "category": {
+            "College of Science, Mathematics and Technology": "理工学院"
+        },
+        "major_name": {
+            "Computer Science": "计算机科学与技术"
+        }
+    }
+}

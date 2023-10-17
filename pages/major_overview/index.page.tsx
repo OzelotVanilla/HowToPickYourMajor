@@ -1,4 +1,3 @@
-import { Layout, Menu, MenuProps } from "antd"
 import "./major_overview.scss"
 import SubPage_Layout from "../subpage_layout"
 import { useEffect, useState } from "react"
@@ -6,14 +5,17 @@ import { AvailableCategory, MajorData, fetchMajorOverviewData } from "./major_ov
 import { useCookie } from "next-cookie"
 import { groupElementBy } from "@/utils/common"
 import { useI18N } from "@/i18n/i18n"
+import { Layout, Menu, MenuProps, Tooltip } from "antd"
 const { Sider } = Layout
+import major_text_res from "./major_overview_text.json"
 
 export default function MajorOverviewPage()
 {
     let [major_list, setMajorList] = useState<MajorData["majors"]>([])
     const cookie = useCookie()
 
-    const { text } = useI18N()
+    const { text, locale } = useI18N()
+    const major_text: typeof major_text_res["en"] = major_text_res[locale]
 
     const cookie_name_major_data = "major_cache_data"
 
@@ -58,19 +60,25 @@ export default function MajorOverviewPage()
 
     function getSideMenu()
     {
+        if (major_list.length == 0) { return (<></>) }
+
         type MenuItem = Required<MenuProps>["items"]
 
         const grouped_by_category = groupElementBy(major_list, "category")
         const menu_items: MenuItem = [...grouped_by_category.entries()].map(
             ([category, majors]) => ({
                 key: category,
-                label: text.major_category_name[category as keyof typeof text.major_category_name],
-                children: majors.map((major) => (
-                    { key: major.name, label: text.major_name[major.name as keyof typeof text.major_category_name] }
-                ))
+                label: (<Tooltip placement="right"
+                    title={major_text.category[category as keyof typeof major_text.category]}>
+                    {major_text.category[category as keyof typeof major_text.category]}
+                </Tooltip>),
+                children: majors.map((major) => ({
+                    key: major.name, label: major_text.major_name[major.name as keyof typeof major_text.major_name]
+                })),
             })
         )
 
+        console.log(`Major list:\n`, major_list)
         // console.log(menu_items)
         // console.log(...grouped_by_category.keys())
         return (<Menu mode="inline" items={menu_items} defaultOpenKeys={[...grouped_by_category.keys()]} />)

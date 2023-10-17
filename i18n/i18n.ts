@@ -5,17 +5,19 @@ import en_text from "./en.json"
 import zh_text from "./zh.json"
 import getNextConfig from "next/config"
 
+type AvailablePageLanguage = "en" | "zh"
 
 export function useI18N()
 {
-    const { locale } = useRouter()
+    const { locale: router_locale } = useRouter()
 
     let text: typeof en_text;
-    switch (locale)
+    let locale: AvailablePageLanguage;
+    switch (router_locale)
     {
-        case "en": text = en_text; break;
-        case "zh": text = zh_text; break;
-        default: text = en_text; break;
+        case "en": text = en_text; locale = "en"; break;
+        case "zh": text = zh_text; locale = "zh"; break;
+        default: text = en_text; locale = "en"; break;
     }
 
     return ({ locale, text })
