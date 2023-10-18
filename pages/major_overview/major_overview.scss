@@ -4,4 +4,15 @@
 {
     width: 100%;
     height: 100%;
+
+    #MajorOverviewPage_Content
+    {
+        background-color: #fcfcfc;
+        padding: 0px min(10vw, 40px);
+
+        #MajorOverviewPage_FutureJob_List
+        {
+            margin-top: min(3vh, 40px);
+        }
+    }
 }
