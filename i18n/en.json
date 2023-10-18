@@ -9,6 +9,10 @@
     "navbar": {
         "project_name": "Pick My Major"
     },
+    "major_overview": {
+        "major_desc_label": "Major Description",
+        "future_job_label": "Possible Future Job"
+    },
     "lang": {
         "en": "English",
         "zh": "中文 (Chinese)"
